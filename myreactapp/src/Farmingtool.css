@@ -1,0 +1,40 @@
+/* Add this to your CSS file */
+
+.tool-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+  justify-content: center; /* Center the cards horizontally */
+  padding: 20px; /* Add padding around the grid */
+}
+
+.tool-card {
+  border: 1px solid #ddd; /* Lighter border color */
+  border-radius: 8px; /* Rounded corners */
+  padding: 15px; /* Increased padding for better spacing */
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for hover effects */
+  background-color: white; /* White background for cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 200px; /* Fixed width for consistency */
+}
+
+.tool-card:hover {
+  transform: translateY(-5px); /* Lift the card slightly on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+.tool-image {
+  width: 100%; /* Full width of the card */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 4px; /* Slightly rounded corners for images */
+}
+
+.tool-details {
+  margin-top: 20px; /* Space above details */
+  border: 1px solid #ccc; /* Border for details */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px; /* Padding inside details */
+  background-color: #f9f9f9; /* Light background for details */
+}

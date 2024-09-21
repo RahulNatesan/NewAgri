@@ -26,8 +26,6 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
 }
 
-
-
 .nav-list {
   display: flex;
   align-items: center;
@@ -40,10 +38,9 @@ body {
   margin-left: -220px; /* Move logo a bit to the left */
 }
 
-
 .logo img {
   width: 180px;
-  border-radius: 50px;
+  border-radius: 50px; /* Rounded edges for logo */
 }
 
 .nav-list li {
@@ -54,10 +51,26 @@ body {
 .nav-list li a {
   text-decoration: none;
   color: #000;
+  position: relative; /* For underline effect */
+  transition: color 0.3s; /* Smooth color transition */
+  border-radius: 5px; /* Rounded edges for links */
+  padding: 5px; /* Add padding for better click area */
 }
 
 .nav-list li a:hover {
   color: grey;
+}
+
+.nav-list li a:hover::after {
+  content: ''; /* Create a pseudo-element for the underline */
+  display: block;
+  width: 100%; /* Full width underline */
+  height: 2px; /* Underline height */
+  background: grey; /* Underline color */
+  position: absolute; /* Position it below the text */
+  left: 0;
+  bottom: -5px; /* Space between text and underline */
+  transition: background 0.3s; /* Smooth transition */
 }
 
 .rightNav {
@@ -70,7 +83,7 @@ body {
   padding: 5px;
   font-size: 15px;
   border: 2px solid rgb(0, 0, 0);
-  border-radius: 9px;
+  border-radius: 9px; /* Rounded edges for the search input */
   width: 150px; /* Set fixed width */
 }
 
@@ -82,7 +95,7 @@ body {
   color: #fff;
   background-color: #000;
   border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
+  border-radius: 5px; /* Rounded corners for button */
   cursor: pointer;
   transition: background-color 0.3s ease; /* Smooth transition */
 }
@@ -144,19 +157,78 @@ body {
   transform: translateY(0); /* Original position */
 }
 
+.image-container {
+  height: 34vw;
+  margin: 30px auto;
+  background: url('./assets/header agriculture page_Landscape.png') no-repeat;
+  background-size: cover; /* Changed to cover for better aesthetics */
+  position: relative;
+  border-radius: 8px; /* Rounded corners for the image container */
+}
+
+.image-container img.banner-image {
+  width: 100%;
+  height: 100%; /* make the image take up the full height of the container */
+  object-fit: cover; /* ensure the image is scaled to cover the container */
+  border-radius: 8px; /* Rounded corners for the image */
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff; /* adjust the text color to your liking */
+}
 
 /* Responsive adjustments */
+/* Add this to your App.css */
+
+/* Updated button styles in App.css */
+/* Add this to your App.css */
+
+/* Center alignment for button container */
+.button-container {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center the buttons horizontally */
+  margin-top: 10px; /* Space above the button container */
+}
+
+.learn-more-button {
+  display: inline-block; /* Allows padding to be applied */
+  padding: 8px 15px; /* Reduced padding for smaller size */
+  font-size: 14px; /* Decreased font size */
+  color: #fff; /* White text color */
+  background-color: #007BFF; /* Bootstrap primary color */
+  border-radius: 5px; /* Rounded edges */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition effects */
+  margin-top: 15px; /* Space above the button */
+}
+
+/* Hover effect for buttons */
+.learn-more-button:hover {
+  background-color: #0056b3; /* Darker shade for hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Responsive adjustments for buttons */
 @media (max-width: 600px) {
-  .nav-list {
-    flex-direction: column; /* Stack navigation items on smaller screens */
-    align-items: flex-start; /* Align items to the start */
+  .learn-more-button {
+      width: 100%; /* Full width on smaller screens */
+      text-align: center; /* Center the text */
   }
+
+
+
   .rightNav {
-    width: 100%; /* Full width for right navigation */
-    margin-top: 10px; /* Space above */
+      width: 100%; /* Full width for right navigation */
+      margin-top: 10px; /* Space above */
   }
+
   .btn {
-    width: 100%; /* Full width on smaller screens */
-    margin: 10px 0; /* Margin for spacing */
+      width: 100%; /* Full width on smaller screens */
+      margin: 10px 0; /* Margin for spacing */
   }
 }
