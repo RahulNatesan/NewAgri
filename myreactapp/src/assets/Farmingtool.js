@@ -1,10 +1,7 @@
-// src/assets/Picture1.jpg
-// src/assets/Picture2.jpg
-// ...
-// src/assets/Picture7.jpg
-
 // src/Farmingtool.js
+
 import React, { useState } from 'react';
+
 import tractorImage from '../assets/Picture1.jpg';
 import harvesterImage from '../assets/Picture2.jpg';
 import powerTillerImage from '../assets/Picture3.jpg';
@@ -12,6 +9,7 @@ import rotaryTillerImage from '../assets/Picture4.jpg';
 import seedDrillImage from '../assets/Picture5.jpg';
 import dripIrrigationImage from '../assets/Picture6.jpg';
 import sprayerImage from '../assets/Picture7.jpg';
+import './Farmingtool.css';
 
 const toolImages = {
   tractor: tractorImage,
@@ -90,7 +88,6 @@ const Farmingtool = () => {
     <div>
       <h1>Farming Tools</h1>
       <p>Explore a variety of farming tools that can enhance your agricultural productivity:</p>
-
       <div className="tool-grid">
         {toolsData.map(tool => (
           <div key={tool.id} className="tool-card" onClick={() => handleToolClick(tool)}>
@@ -99,7 +96,6 @@ const Farmingtool = () => {
           </div>
         ))}
       </div>
-
       {selectedTool && (
         <div className="tool-details">
           <h2>{selectedTool.name}</h2>
