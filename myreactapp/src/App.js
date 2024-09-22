@@ -1,22 +1,36 @@
-// App.js
+// src/App.js
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 import Finallogo from "./assets/Finallogo.jpg";
 import headerImage from "./assets/header agriculture page_Landscape.png";
-import GovernmentSchemes from "./assets/GovernmentSchemes";
-import Cropprice from "./assets/Cropprice"; // Import Cropprice component
-import Farmingtool from "./assets/Farmingtool"; // Import Farmingtool component
-import './Farmingtool.css';
-
-
+import GovernmentSchemes from "./assets/GovernmentSchemes"; 
+import Cropprice from "./assets/Cropprice"; 
+import Farmingtool from "./assets/Farmingtool"; 
+import LearnMore from "./assets/LearnMore"; 
+import WeatherReport from "./assets/WeatherReport"; 
 
 function App() {
   const [activeTab, setActiveTab] = useState("home");
+  const [fadeIn, setFadeIn] = useState(true);
+  const [chatVisible, setChatVisible] = useState(false);
 
   const handleTabChange = (tab) => {
-    setActiveTab(tab);
+    if (activeTab === tab) return;
+    setFadeIn(false);
+    setTimeout(() => {
+      setActiveTab(tab);
+      setFadeIn(true);
+    }, 300);
+  };
+
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
+
+  const toggleChat = () => {
+    setChatVisible(!chatVisible);
   };
 
   return (
@@ -31,7 +45,7 @@ function App() {
               <Link to="/" onClick={() => handleTabChange("home")}>Home</Link>
             </li>
             <li>
-              <Link to="/tutorials" onClick={() => handleTabChange("tutorials")}>Tutorials</Link>
+              <Link to="/weather" onClick={() => handleTabChange("weather")}>Weather</Link>
             </li>
             <li>
               <Link to="/resources" onClick={() => handleTabChange("resources")}>Resources</Link>
@@ -47,54 +61,67 @@ function App() {
         </nav>
 
         <section className="section">
-          <div className="box-main">
+          <div className={`box-main fade-in ${fadeIn ? "fade-in-active" : ""}`}>
             <Routes>
               <Route path="/" element={
                 activeTab === "home" && (
                   <div className={`tab-content ${activeTab === "home" ? "tab-content-active" : ""}`}>
                     <div className="image-container">
                       <img src={headerImage} alt="Home page banner" className="banner-image" />
-                      <div className="text-overlay"></div>
+                      <div className="text-overlay">
+                        <h1 className="animated-text">
+                          <span className="line word1">Welcome</span>
+                          <span className="line word2">to</span>
+                          <span className="line word3">AgriConnect</span>
+                        </h1>
+                        <p className="slogan">Connecting Farmers, Growing Futures</p>
+                        <Link to="/learn-more" className="learn-more-button">Learn More</Link>
+                      </div>
                     </div>
-                    <h1 className="text-big center"><b>Welcome to AgriConnect</b></h1>
-                    <h1 className="text-big">Empowering Farmers with Knowledge & Resources</h1>
-                    <p className="text-small">At AgriConnect, our goal is to bridge the gap between farmers and essential agricultural information. We aim to provide a one-stop platform that helps farmers in making informed decisions and improving their productivity.</p>
                     <h1 className="text-big">Current Market Prices</h1>
-<p className="text-small">
-    Stay updated with the latest prices of vegetables, crops, and tools. Whether you're a small-scale or large-scale farmer, having access to accurate market rates can help you sell your produce at the best price and invest in tools at the right time.
-</p>
-<Link to="/cropprice" className="learn-more-button">Learn More</Link>
-
-<h1 className="text-big">Government Schemes</h1>
-<p className="text-small">
-    Explore government initiatives and schemes specifically designed to benefit farmers. We provide details about available subsidies, loans, and insurance schemes, making it easier for you to access financial aid and support programs.
-</p>
-<Link to="/government-schemes" className="learn-more-button">Learn More</Link>
-
-<h1 className="text-big">Farming Tools & Machinery</h1>
-<p className="text-small">
-    Find the best tools and equipment for your farming needs. We provide reviews, pricing, and details on where you can buy modern machinery to make your farming practices more efficient.
-</p>
-<Link to="/farmingtool" className="learn-more-button">Learn More</Link>
-                    <h1 className="text-big">Agri Tips & Best Practices</h1>
-                    <p className="text-small">Enhance your knowledge with expert tips on crop management, sustainable farming practices, and organic farming. Learn about pest control, water management, and soil health to increase your yield.</p>
-                    <h1 className="text-big">Connect with Experts</h1>
-                    <p className="text-small">Need advice on a specific issue? Connect with agricultural experts and get personalized recommendations based on your farm's needs. Whether it's choosing the right crops for your soil or understanding the latest technology in farming, we've got you covered.</p>
-                    <h1 className="text-big">Join the AgriConnect Community</h1>
-                    <p className="text-small">Become part of a growing network of farmers who are sharing knowledge, experiences, and solutions to common challenges in agriculture. Together, we can cultivate success.</p>
+                    <p className="text-small">Stay updated with the latest prices of vegetables, crops, and tools. Whether you're a small-scale or large-scale farmer, having access to accurate market rates can help you sell your produce at the best price and invest in tools at the right time.</p>
+                    <div className="button-container">
+                      <Link to="/cropprice" className="learn-more-button">Learn More</Link>
+                    </div>
+                    <h1 className="text-big">Government Schemes</h1>
+                    <p className="text-small">Explore government initiatives and schemes specifically designed to benefit farmers. We provide details about available subsidies, loans, and insurance schemes, making it easier for you to access financial aid and support programs.</p>
+                    <div className="button-container">
+                      <Link to="/government-schemes" className="learn-more-button">Learn More</Link>
+                    </div>
+                    <h1 className="text-big">Farming Tools & Machinery</h1>
+                    <p className="text-small">Find the best tools and equipment for your farming needs. We provide reviews, pricing, and details on where you can buy modern machinery to make your farming practices more efficient.</p>
+                    <div className="button-container">
+                      <Link to="/farmingtool" className="learn-more-button">Learn More</Link>
+                    </div>
                   </div>
                 )
               } />
+              <Route path="/learn-more" element={<LearnMore />} />
               <Route path="/government-schemes" element={<GovernmentSchemes />} />
               <Route path="/cropprice" element={<Cropprice />} />
               <Route path="/farmingtool" element={<Farmingtool />} />
-              {/* Add other routes here */}
-              <Route path="/tutorials" element={<div>Tutorials Content</div>} />
+              <Route path="/weather" element={<WeatherReport />} />
               <Route path="/resources" element={<div>Resources Content</div>} />
               <Route path="/community" element={<div>Community Content</div>} />
             </Routes>
           </div>
         </section>
+
+        <div className="chatbot-button" onClick={toggleChat}>
+          💬
+        </div>
+
+        {chatVisible && (
+          <div className="chat-window">
+            <iframe
+              src="https://www.chatbase.co/chatbot-iframe/P2cKXl8hhG_3VbCHlJthi"
+              width="100%"
+              style={{ height: "100%" }}
+              frameBorder="0"
+              title="Chatbot"
+            />
+          </div>
+        )}
 
         <footer className="footer">
           <p className="text-footer">Copyright ©-All rights are reserved</p>

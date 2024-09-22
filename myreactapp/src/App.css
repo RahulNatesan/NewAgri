@@ -1,4 +1,82 @@
-/* Filename - App.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: montserrat, sans-serif;
+  background: black;
+}
+
+.animated-text {
+  color: #fff;
+  position: absolute;
+  top: 20%; /* Adjust this value to position the text vertically */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent; /* Make background transparent */
+  padding: 0; /* Remove padding */
+  height: auto; /* Remove fixed height */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.line {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 40px;
+  line-height: 60px;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn 1s forwards; /* Fade-in effect */
+  display: inline-block; /* Allows spacing between words */
+  margin: 0 10px; /* Add space between words */
+}
+
+.slogan {
+  color: #fff; /* Set the text color */
+  font-size: 24px; /* Adjust the font size as needed */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn 1s forwards; /* Fade-in effect */
+  animation-delay: 1s; /* Delay for the slogan to appear after the main text */
+  text-align: center; /* Center the slogan */
+  margin-top: 50px; /* Space between the main text and the slogan */
+}
+
+.learn-more-button {
+  display: inline-block; /* Allows padding to be applied */
+  padding: 10px 20px; /* Adjust the padding for the button */
+  font-size: 18px; /* Set font size */
+  color: #fff; /* White text color */
+  background-color: #007BFF; /* Initial background color */
+  border-radius: 8px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition effects */
+  margin-top: 20px; /* Space above the button */
+}
+
+.learn-more-button:hover {
+  background-color: #0056b3; /* Darker shade for hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Starting position */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Final position */
+  }
+}
+
+.word1 {
+  animation-delay: 0s; /* No delay for the first word */
+}
+
+.word2 {
+  animation-delay: 0.5s; /* Delay for the second word */
+}
+
+.word3 {
+  animation-delay: 0.8s; /* Delay for the third word */
+}
 
 * {
   margin: 0;
@@ -21,7 +99,7 @@ body {
   justify-content: space-between;
   position: sticky;
   top: 0;
-  background-color: #fff; /* Set a solid background color */
+  background-color: 	#25D366; /* Set a solid background color */
   z-index: 1000; /* Ensure it stays on top of other content */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
 }
@@ -50,7 +128,7 @@ body {
 
 .nav-list li a {
   text-decoration: none;
-  color: #000;
+  color: white;
   position: relative; /* For underline effect */
   transition: color 0.3s; /* Smooth color transition */
   border-radius: 5px; /* Rounded edges for links */
@@ -58,7 +136,7 @@ body {
 }
 
 .nav-list li a:hover {
-  color: grey;
+  color: brown;
 }
 
 .nav-list li a:hover::after {
@@ -66,7 +144,7 @@ body {
   display: block;
   width: 100%; /* Full width underline */
   height: 2px; /* Underline height */
-  background: grey; /* Underline color */
+  background: brown; /* Underline color */
   position: absolute; /* Position it below the text */
   left: 0;
   bottom: -5px; /* Space between text and underline */
@@ -181,6 +259,17 @@ body {
   text-align: center;
   color: #fff; /* adjust the text color to your liking */
 }
+/* Add this to your App.css */
+
+/* Fade-in effect for content */
+.fade-in {
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in; /* Transition for fading effect */
+}
+
+.fade-in-active {
+  opacity: 1; /* Fully visible */
+}
 
 /* Responsive adjustments */
 /* Add this to your App.css */
@@ -188,12 +277,29 @@ body {
 /* Updated button styles in App.css */
 /* Add this to your App.css */
 
+/* Filename - App.css */
+
+/* Existing CSS remains unchanged */
+
 /* Center alignment for button container */
 .button-container {
   display: flex; /* Use flexbox for alignment */
   justify-content: center; /* Center the buttons horizontally */
   margin-top: 10px; /* Space above the button container */
 }
+
+/* Fade-in effect for content */
+/* Fade-in effect for content */
+.fade-in {
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease-in; /* Transition for fading effect */
+}
+
+.fade-in-active {
+  opacity: 1; /* Fully visible */
+}
+
+/* ... rest of your CSS */
 
 .learn-more-button {
   display: inline-block; /* Allows padding to be applied */
@@ -212,6 +318,77 @@ body {
   background-color: #0056b3; /* Darker shade for hover */
   transform: translateY(-2px); /* Lift effect on hover */
 }
+
+/* Chatbot Button */
+.chatbot-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #007BFF; /* Change this to your desired color */
+  color: white;
+  border-radius: 50%; /* Circular button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 24px; /* Increase the icon size */
+  z-index: 1000; /* Make sure it stays on top */
+  transition: background-color 0.3s;
+}
+
+.chatbot-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Chat Window Style */
+/* Chat Window Style */
+.chat-window {
+  position: fixed;
+  bottom: 80px; /* Adjust for button size */
+  right: 20px;
+  width: 300px; /* Set width for chat window */
+  height: 400px; /* Increased height for a longer chat window */
+  background-color: white;
+  border: 1px solid #ccc; /* Light border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px; /* Rounded corners */
+  z-index: 1000; /* Make sure it stays on top */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* src/assets/styles.css */
+
+.weather-report {
+  position: relative;
+  overflow: hidden; /* Ensures the video does not overflow */
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1; /* Place the video behind the content */
+  transform: translate(-50%, -50%);
+  opacity: 0.5; /* Adjust opacity as needed */
+}
+
+.content {
+  position: relative;
+  z-index: 1; /* Ensure text is above the video */
+  color: white; /* Change text color for visibility */
+  padding: 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5); /* Optional: Add a background to enhance readability */
+  border-radius: 10px;
+}
+
 
 /* Responsive adjustments for buttons */
 @media (max-width: 600px) {
